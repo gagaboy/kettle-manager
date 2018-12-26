@@ -1,3 +1,6 @@
 /webapp/WEB-INF/classes
 *.JSCompress
 /target
+*.iml
+*.ipr
+*.iws

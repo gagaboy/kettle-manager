@@ -6,20 +6,7 @@
  */
 package com.eova.config;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import net.oschina.kettleutil.common.KuConst;
-
-import org.beetl.core.GroupTemplate;
-import org.beetl.ext.jfinal.BeetlRenderFactory;
-import org.beetl.sql.core.db.Db;
-
 import cn.benma666.constants.UtilConst;
-
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.util.JdbcUtils;
@@ -33,17 +20,7 @@ import com.eova.core.menu.MenuController;
 import com.eova.core.meta.MetaController;
 import com.eova.core.task.TaskController;
 import com.eova.interceptor.LoginInterceptor;
-import com.eova.model.Button;
-import com.eova.model.EovaLog;
-import com.eova.model.Menu;
-import com.eova.model.MenuObject;
-import com.eova.model.MetaField;
-import com.eova.model.MetaObject;
-import com.eova.model.Role;
-import com.eova.model.RoleBtn;
-import com.eova.model.Task;
-import com.eova.model.User;
-import com.eova.model.Widget;
+import com.eova.model.*;
 import com.eova.service.ServiceManager;
 import com.eova.template.common.config.TemplateConfig;
 import com.eova.template.masterslave.MasterSlaveController;
@@ -56,22 +33,13 @@ import com.eova.widget.grid.GridController;
 import com.eova.widget.tree.TreeController;
 import com.eova.widget.treegrid.TreeGridController;
 import com.eova.widget.upload.UploadController;
-import com.jfinal.config.Constants;
-import com.jfinal.config.Handlers;
-import com.jfinal.config.Interceptors;
-import com.jfinal.config.JFinalConfig;
-import com.jfinal.config.Plugins;
-import com.jfinal.config.Routes;
+import com.jfinal.config.*;
 import com.jfinal.log.Log;
 import com.jfinal.plugin.IPlugin;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.plugin.activerecord.IDataSourceProvider;
-import com.jfinal.plugin.activerecord.dialect.AnsiSqlDialect;
-import com.jfinal.plugin.activerecord.dialect.Dialect;
-import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
-import com.jfinal.plugin.activerecord.dialect.OracleDialect;
-import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
+import com.jfinal.plugin.activerecord.dialect.*;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
@@ -81,6 +49,16 @@ import com.oss.controller.TimingController;
 import com.oss.model.MetlDatabase;
 import com.oss.model.MetlTaskTiming;
 import com.oss.model.MetlUnifyDict;
+import net.oschina.kettleutil.common.KuConst;
+import org.beetl.core.GroupTemplate;
+import org.beetl.ext.jfinal.BeetlRenderFactory;
+import org.beetl.sql.core.db.Db;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EovaConfig extends JFinalConfig {
 
@@ -150,7 +128,8 @@ public class EovaConfig extends JFinalConfig {
 		// 初始化配置
 		EovaInit.initConfig();
 		// 开发模式
-		me.setDevMode(xx.toBoolean(props.get("devMode"), true));
+		me.setDevMode(xx.toBoolean(props.get("devMode"), false));
+		System.err.println("devMode is ======"+xx.toBoolean(props.get("devMode"))+"======");
 		// 设置主视图为Beetl
 		me.setMainRenderFactory(new BeetlRenderFactory());
 		// POST内容最大500M(安装包上传)

@@ -40,24 +40,24 @@
     </properties>
 
     <dependencies>
-<!--
-        <dependency>
-            <groupId>cn.benma666</groupId>
-            <artifactId>myutils</artifactId>
-            <version>2.0</version>
-        </dependency>
- -->
+
+        <!--<dependency>-->
+            <!--<groupId>cn.benma666</groupId>-->
+            <!--<artifactId>myutils</artifactId>-->
+            <!--<version>2.0</version>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>oracle.ojdbc</groupId>
-            <artifactId>ojdbc</artifactId>
-            <version>${oracle.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>oracle.ojdbc</groupId>-->
+            <!--<artifactId>ojdbc</artifactId>-->
+            <!--<version>${oracle.version}</version>-->
+        <!--</dependency>-->
 
         <!--         <dependency> -->
         <!--             <groupId>postgresql</groupId> -->
@@ -331,6 +331,15 @@
                         <resource>
                             <directory>${basedir}/webapp</directory>
                         </resource>
+                        <resource>
+                            <directory>${basedir}/ext-lib/</directory>
+                            <targetPath>WEB-INF/lib</targetPath>
+                            <includes>
+                                <include>**/KettleUtil.jar</include>
+                                <include>**/myutils-2.0.jar</include>
+                                <!--<include>**/eova-1.5.1.jar</include>-->
+                            </includes>
+                        </resource>
                     </webResources>
                 </configuration>
             </plugin>
@@ -352,7 +361,6 @@
                     <port>8080</port>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
