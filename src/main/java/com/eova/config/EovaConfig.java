@@ -128,8 +128,7 @@ public class EovaConfig extends JFinalConfig {
 		// 初始化配置
 		EovaInit.initConfig();
 		// 开发模式
-		me.setDevMode(xx.toBoolean(props.get("devMode"), false));
-		System.err.println("devMode is ======"+xx.toBoolean(props.get("devMode"))+"======");
+		me.setDevMode(xx.toBoolean(props.get("devMode"), true));
 		// 设置主视图为Beetl
 		me.setMainRenderFactory(new BeetlRenderFactory());
 		// POST内容最大500M(安装包上传)
